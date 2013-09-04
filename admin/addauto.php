@@ -106,6 +106,15 @@ if ($_SESSION['auth'] == 1):
    
                                         //Creazione anteprime
                                         
+                                        // Ottengo le informazioni sull'immagine originale
+                                        list($width1, $height1) = getimagesize($nuovo_nome);
+                                        // Creo la versione 480*359 dell'immagine (thumbnail)
+                                        $thumb1 = imagecreatetruecolor(480, 359);
+                                        $source1 = imagecreatefromjpeg($nuovo_nome.'');
+                                        imagecopyresized($thumb1, $source1, 0, 0, 0, 0, 480, 359, $width1, $height1);
+                                        // Salvo l'immagine ridimensionata
+                                        imagejpeg($thumb1,$percorso.$ID.".jpg".'', 75);
+                                        ////////////////////////////////
   
                                         // Ottengo le informazioni sull'immagine originale
                                         list($width, $height) = getimagesize($nuovo_nome);
@@ -117,15 +126,6 @@ if ($_SESSION['auth'] == 1):
                                         imagejpeg($thumb,$percorso."pre".$ID.".jpg".'', 75);
                                         ////////////////////////////////
                                         
-                                        // Ottengo le informazioni sull'immagine originale
-                                        list($width1, $height1) = getimagesize($nuovo_nome);
-                                        // Creo la versione 480*359 dell'immagine (thumbnail)
-                                        $thumb1 = imagecreatetruecolor(480, 359);
-                                        $source1 = imagecreatefromjpeg($nuovo_nome.'');
-                                        imagecopyresized($thumb1, $source1, 0, 0, 0, 0, 480, 359, $width1, $height1);
-                                        // Salvo l'immagine ridimensionata
-                                        imagejpeg($thumb1,$percorso.$ID.".jpg".'', 75);
-                                        ////////////////////////////////
                                 
 			} else { echo '<div class="alert alert-error">Devi inserire tutti i campi</div>'; }
 		}

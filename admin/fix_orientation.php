@@ -107,14 +107,14 @@ function fix_orientation($fileandpath) {
     return false;
   
   //-- rename original (very ugly, could probably be rewritten, but i can't be arsed at this stage)
-  $parts = explode("/", $fileandpath);
-  $oldname = array_pop($parts);
-  $path = implode('/', $parts);
-  $oldname_parts = explode(".", $oldname);
-  $ext = array_pop($oldname_parts);
-  $newname = implode('.', $oldname_parts).'.orig.'.$ext;
+  //$parts = explode("/", $fileandpath);
+  //$oldname = array_pop($parts);
+  //$path = implode('/', $parts);
+  //$oldname_parts = explode(".", $oldname);
+  //$ext = array_pop($oldname_parts);
+  //$newname = implode('.', $oldname_parts).'.orig.'.$ext;
   
-  rename($fileandpath, $path.'/'.$newname);
+  //rename($fileandpath, $path.'/'.$newname);
   
   // Save it and the return the result (true or false)
   $done = save_image_resource($final_img,$fileandpath);

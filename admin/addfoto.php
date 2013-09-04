@@ -69,17 +69,8 @@ if ($_SESSION['auth'] == 1):
                             move_uploaded_file($nome_immagine, $nuovo_nome);
                         }
 
-                        // Ottengo le informazioni sull'immagine originale
-                        list($width1, $height1) = getimagesize($nuovo_nome);
-                        // Creo la versione 480*359 dell'immagine (thumbnail)
-                        $thumb1 = imagecreatetruecolor(480, 359);
-                        $source1 = imagecreatefromjpeg($nuovo_nome . '');
-                        imagecopyresized($thumb1, $source1, 0, 0, 0, 0, 480, 359, $width1, $height1);
-                        // Salvo l'immagine ridimensionata
-                        imagejpeg($thumb1, $percorso . $id . ".jpg" . '', 75);
-                        ////////////////////////////////
                     }
-                    header("Location: index.php");
+                    header("Location: rotate.php");
                 } else {
                     echo "Compila tutti i campi";
                 }
